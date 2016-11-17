@@ -28,6 +28,10 @@ var Voice = function(context, frequency, amplitude, parameters, effect_node) {
 
 	this.filterCutoffFreq = parameters.filterCutoffFreq;
 	this.filterQ = parameters.filterQ;
+	this.filterEnvAttackTime = parameters.filterEnvAttackTime;
+	this.filterEnvDecayTime = parameters.filterEnvDecayTime;
+	this.filterEnvSustainLevel = parameters.filterEnvSustainLevel;
+	this.filterEnvReleaseTime = parameters.filterEnvReleaseTime;
 
 	this.ampEnvLevel = amplitude;
 	this.ampEnvAttackTime = parameters.ampEnvAttackTime;
@@ -126,6 +130,18 @@ Synth.prototype.updateParams = function(params, value) {
 	switch (params) {
 		case 'filter_freq': 
 			this.parameters.filterCutoffFreq = value;
+			break;		
+		case 'filter_attack_time': 
+			this.parameters.filterEnvAttackTime = value;
+			break;		
+		case 'filter_decay_time':
+			this.parameters.filterEnvDecayTime = value;
+			break;		
+		case 'filter_sustain_level':
+			this.parameters.filterEnvSustainLevel = value;
+			break;		
+		case 'filter_release_time':
+			this.parameters.filterEnvReleaseTime = value;
 			break;		
 		case 'amp_attack_time': 
 			this.parameters.ampEnvAttackTime = value;
