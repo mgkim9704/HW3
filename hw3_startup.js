@@ -43,9 +43,20 @@ else
 
 nx.onload = function() {
 
-	// OSC
-
+	// OSC    @@@@@@ change!!!!
+	gui_lfo_rate.min = 0;
+	gui_lfo_rate.max = 100;
+	gui_lfo_freq.set({ value: synth_params.lfoRate })
+	gui_lfo_freq.on('*',function(data) {
+		synth.updateParams('filter_freq', data.value);
+	});
 	
+	gui_lfo_depth.min = 0;
+	gui_lfo_depth.max = 100;
+	gui_lfo_depth.set({ value: synth_params.lfoDepth })
+	gui_lfo_depth.on('*',function(data) {
+		synth.updateParams('filter_freq', data.value);
+	});
 	
 	// Filter
 	gui_filter_freq.min = 100;	
