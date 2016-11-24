@@ -25,6 +25,8 @@ var Voice = function(context, frequency, amplitude, parameters, effect_node) {
 
 	// preset parameters 
 	this.osc.frequency.value = frequency;
+	this.osc.lfoRate = parameters.lfoRate;
+	this.osc.lfoDepth = parameters.lfoDepth;
 
 	this.filterCutoffFreq = parameters.filterCutoffFreq;
 	this.filterQ = parameters.filterQ;
