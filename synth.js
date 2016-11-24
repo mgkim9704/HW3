@@ -57,6 +57,20 @@ Voice.prototype.on = function() {
 	this.voiceState = 1;
 };
 
+Voice.prototype.triggerFilterEnvelope = function() {
+	var param = this.FilterEnv.gain;
+	var now = this.context.currentTime;
+
+	param.cancelScheduledValues(now);
+
+	// attack
+	param.setValueAtTime(0, now);
+	param.linearRfilterToValueAtTime(this.filterEnvLevel, now + this.filterEnvAttackTime);
+
+	// decay
+	param.linearRfilterToValueAtTime(this.filterEnvLevel * this.filterEnvSustainLevel, now + this.filterEnvAttackTime + this.filterEnvDecayTime);
+};
+
 Voice.prototype.triggerAmpEnvelope = function() {
 	var param = this.ampEnv.gain;
 	var now = this.context.currentTime;
