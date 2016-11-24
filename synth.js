@@ -53,6 +53,7 @@ var Voice = function(context, frequency, amplitude, parameters, effect_node) {
 Voice.prototype.on = function() {
 	this.osc.start();
 	this.triggerAmpEnvelope();
+	this.triggerFilterEnvelope()
 
 	this.voiceState = 1;
 };
